@@ -1,36 +1,37 @@
 import 'package:flutter/material.dart';
-import 'TP1/TP1c.dart';
-import 'TP2/TP2.dart';
+import 'package:provider/provider.dart';
+import 'screen.dart';
+import 'view_model.dart';
 
-void main() {
-  runApp(const TP2App());
-}
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class TP2App extends StatelessWidget {
+  const TP2App({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Home Page'),
+      home: const TP2(),
     );
   }
 }
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key, this.title = ''}) : super(key: key);
-  final String title;
+
+class TP2 extends StatelessWidget {
+  const TP2({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(this.title),
+        title: const Text("TP2"),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
       ),
-      body: TP1c(
-          )
+      body: ChangeNotifierProvider(
+        create: (context) => ViewModel(),
+        child: const Screen(),
+      ),
     );
   }
 }
