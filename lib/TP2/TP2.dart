@@ -30,7 +30,7 @@ class TP2 extends StatelessWidget {
       ),
       body: ChangeNotifierProvider(
         create: (context) => ViewModel(),
-        child: const Screen(),
+        child: Screen(),
       ),
     );
   }
