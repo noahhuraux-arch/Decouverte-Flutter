@@ -1,18 +1,22 @@
-import '../TP2/screen.dart';
-import 'user_service.dart';
-import 'user.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'screen.dart';
+import 'user_provider.dart';
 
-class TP4App extends Screen {
+class TP4App extends StatelessWidget {
   const TP4App({super.key});
 
   @override
-  void build() async {
-    User user = await UserService.load();
-
-    print("Utilisateur chargé :");
-    print("Nom : ${user.name}");
-    print("Email : ${user.email}");
-    print("Ville : ${user.address.city}");
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      key: UniqueKey(),
+      create: (context) => UserProvider()..loadUsers(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: const Scaffold(
+          body: Screen(),
+        ),
+      ),
+    );
   }
 }
-

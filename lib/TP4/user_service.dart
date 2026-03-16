@@ -1,9 +1,12 @@
+import 'dart:convert';
+import 'package:http/http.dart';
+
 import 'address.dart';
 import 'user.dart';
 
 class UserService {
   static Future<User> load() async {
-    return Future.delayed(Duration(milliseconds: 500), () {
+    return Future.delayed(const Duration(milliseconds: 500), () {
       return const User(
         id: 0,
         name: 'Dupont',
@@ -17,5 +20,18 @@ class UserService {
         ),
       );
     });
+  }
+
+  static Future<List<User>> fetchUsers() async {
+
+    final response = await get(Uri.parse('https://jsonplaceholder.typicode.com/users/1'), headers:{'Accept': 'application/json'});
+
+    if (response.statusCode == 200) {
+      return (jsonDecode(response.body) as List)
+          .map<User>((json) => User.fromJson(json))
+          .toList();
+    }
+
+    throw Exception('Failed to load users');
   }
 }
