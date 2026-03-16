@@ -61,7 +61,6 @@ class Screen extends StatelessWidget {
 
   Widget _buildUI3(BuildContext context) {
     final provider = context.watch<UserProvider>();
-
     if (provider.isLoading) {
       return _buildLoadingView();
     }
@@ -80,14 +79,13 @@ class Screen extends StatelessWidget {
           title: Text(user.name),
           subtitle: Text(user.email),
           trailing: Text(user.address.city),
-          /*onTap: () {
+          onTap: () {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => ItemScreen(user),
               ),
             );
           },
-           */
         );
       },
     );

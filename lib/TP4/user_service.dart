@@ -22,16 +22,11 @@ class UserService {
     });
   }
 
-  static Future<List<User>> fetchUsers() async {
-
-    final response = await get(Uri.parse('https://jsonplaceholder.typicode.com/users/1'), headers:{'Accept': 'application/json'});
-
-    if (response.statusCode == 200) {
-      return (jsonDecode(response.body) as List)
-          .map<User>((json) => User.fromJson(json))
-          .toList();
+    static Future<List<User>> fetchUsers() async {
+      final response = await get(Uri.parse('https://jsonplaceholder.typicode.com/users'), headers:{'Accept': 'application/json'});
+      // ignore: curly_braces_in_flow_control_structures
+      if (response.statusCode == 200) return jsonDecode(response.body).map<User>((json) =>
+          User.fromJson(json)).toList();
+      throw Exception('Failed');
     }
-
-    throw Exception('Failed to load users');
-  }
 }
