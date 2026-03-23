@@ -3,9 +3,10 @@ import 'TP1/TP1c.dart';
 import 'TP2/TP2.dart';
 import 'TP3/TP3.dart';
 import 'TP4/TP4.dart';
+import 'TP5/TP5.dart';
 
 void main() {
-  runApp(const TP4App());
+  runApp(const TP5App());
 }
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

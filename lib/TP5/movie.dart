@@ -23,4 +23,17 @@ class Movie {
     required this.maker,
     required this.type
   });
+
+  Map<String, dynamic> toMap() => {
+    if (id != -1) 'id': id,
+    'title': title,
+    'year': year,
+    'maker': maker,
+    'type' : type.index,
+  };
+
+  factory Movie.fromMap(final Map<String, dynamic> map) => Movie(
+
+    type: MovieType.values.firstWhere((element) => element.index == map['type']),
+  );
 }

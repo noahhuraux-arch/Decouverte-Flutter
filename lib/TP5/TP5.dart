@@ -1,13 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../TP5/screen.dart';
+import 'movie_view_model.dart';
 
 class TP5App extends StatelessWidget {
   const TP5App();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TP',
+      title: 'TP5',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
